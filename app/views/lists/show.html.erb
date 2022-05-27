@@ -1,19 +1,20 @@
 <div class="container mt-4">
   <h1><%= @list.name %></h1>
-  <dl>
+  <div class="row">
     <% @list.bookmarks.each do |l| %>
-      <dt>
-        <%= l.movie.title %>
-      </dt>
-      <dd>
-        <%= l.comment %>
-        <%= link_to bookmark_path(l), method: :delete, data: { confirm: 'Are you sure you want to delete?' } do %>
-          <i class="fas fa-trash-alt"></i>
-        <% end %>
-      </dd>
+      <div class="col-lg-3 col-md-6 cold-sm-12">
+        <div class="card">
+          <img src=<%= l.movie.poster_url %>>
+          <%= l.movie.title %>
+          <br>
+          <%= l.comment %>
+          <%= link_to bookmark_path(l), method: :delete, data: { confirm: 'Are you sure you want to delete?' } do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-  </dl>
+  </div>
   <%= link_to 'Create Bookmark', new_list_bookmark_path(@list), class: 'btn btn-primary' %>
   <%= link_to 'back', lists_path, class: 'btn btn-warning' %>
-
 </div>
