@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   # get 'movies/:id', to: 'movies#show'
   # post 'movies', to: 'movies#create'
 
-  resources :lists do
-    
+  resources :lists, except: %i[update delete] do
+    resources :bookmarks, only: %i[new create]
   end
+  resources :bookmarks, only: %i[destroy]
 end

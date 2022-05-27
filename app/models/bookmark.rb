@@ -3,5 +3,5 @@ class Bookmark < ApplicationRecord
   belongs_to :list
 
   validates :comment, length: { minimum: 6 }
-  validates :list_id, uniqueness: { scope: :movie_id } && true
+  validates :movie_id, uniqueness: { scope: :list_id, message: 'already exists' }
 end
