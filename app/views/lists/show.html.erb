@@ -5,11 +5,15 @@
       <div class="col-lg-3 col-md-6 cold-sm-12">
         <div class="card p-2 mb-1 d-flex justify-content-around">
           <img src=<%= l.movie.poster_url %>>
-          <h4><%= l.movie.title %></h4>
+          <div class="d-flex">
+            <h4 ><%= l.movie.title %></h4>
+            <%= link_to bookmark_path(l), method: :delete, data: { confirm: 'Are you sure you want to delete?' } do %>
+              <i class="fas fa-trash-alt flex-end"></i>
+            <% end %>
+          </div>
           <p><%= l.comment %></p>
-          <%= link_to bookmark_path(l), method: :delete, data: { confirm: 'Are you sure you want to delete?' } do %>
-            <i class="fas fa-trash-alt "></i>
-          <% end %>
+          <p><%= l.movie.rating %>/10 ⭐</p>
+          <p><%= l.movie.overview %></p>
         </div>
       </div>
     <% end %>
