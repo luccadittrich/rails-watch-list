@@ -3,13 +3,12 @@
   <div class="row">
     <% @list.bookmarks.each do |l| %>
       <div class="col-lg-3 col-md-6 cold-sm-12">
-        <div class="card">
+        <div class="card p-2 mb-1 d-flex justify-content-around">
           <img src=<%= l.movie.poster_url %>>
-          <%= l.movie.title %>
-          <br>
-          <%= l.comment %>
+          <h4><%= l.movie.title %></h4>
+          <p><%= l.comment %></p>
           <%= link_to bookmark_path(l), method: :delete, data: { confirm: 'Are you sure you want to delete?' } do %>
-            <i class="fas fa-trash-alt"></i>
+            <i class="fas fa-trash-alt "></i>
           <% end %>
         </div>
       </div>
