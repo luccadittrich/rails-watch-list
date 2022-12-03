@@ -1,0 +1,71 @@
+body {
+  //height: 100vh;
+  //background: #0a0a2a;
+}
+.card-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.card {
+  //perspective: 1000px;
+  height: 600px;
+  width: 320px;
+  position: relative;
+  margin: 0px 5px;
+  background-color: transparent;
+  border: 0;
+}
+.card img {
+  width: 100%;
+}
+.card .back {
+  position: absolute;
+  transform: rotatey(odeg);
+  backface-visibility: hidden;
+  transition: transform 0.4s linear;
+}
+.card .front {
+  position: absolute;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  transition: transform 0.4s linear;
+}
+.card:hover .back {
+  transform: rotateY(-180deg);
+  cursor: pointer;
+
+}
+.card:hover .front {
+  transform: rotateY(0deg);
+  cursor: pointer;
+  z-index: 1001;
+}
+
+
+.hover-card{
+ color: transparent;
+  &:hover {
+    color: red;
+    background-color: white;
+    padding: 2%;
+    border-radius: 10%;
+  }
+}
+
+.trash {
+  position: absolute;
+  right: -25px;
+  transition: 0.5s;
+  &:hover {
+    transition: 0.5s;
+
+  }
+}
+
+
+.delete-button {
+  right: -10px;
+}

@@ -1,0 +1,26 @@
+<div class="d-flex position-fixed z-index">
+  <%= link_to lists_path, class: "btn btn-primary" do %>
+    <i class="fas fa-home click"></i>
+  <% end %>
+  <%= form_with url: cards_path, method: :get, class: "d-flex" do  %>
+    <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a card" %>
+    <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+      <i class="fas fa-search click"></i>
+    <% end %>
+  <% end %>
+</div>
+<section class="card-container">
+  <% @cards.sample(100).each do |card| %>
+    <div class="card pt-5">
+      <div class="front">
+        <%= "<img title='#{card.name}' src='#{card.image_url}'>".html_safe %>
+      </div>
+      <div class="back">
+        <%= "<img title='#{card.name}' src='https://i.pinimg.com/originals/ab/c9/85/abc9857e3024baba31716ec0a3d77858.jpg'>".html_safe %>
+      </div>
+    </div>
+  <% end %>
+</section>

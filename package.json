@@ -1,5 +1,5 @@
 {
-  "name": "rails-watch-list",
+  "name":"yugioh_api_rails",
   "private": true,
   "dependencies": {
     "@popperjs/core": "^2.11.5",

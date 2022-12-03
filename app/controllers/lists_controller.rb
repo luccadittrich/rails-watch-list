@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
-  def index
-    @lists = List.all
+  def new
+    @list = List.new
   end
 
   def create
@@ -12,13 +12,32 @@ class ListsController < ApplicationController
     end
   end
 
-  def new
-    @list = List.new
+  def index
+    @lists = List.all
   end
 
   def show
+    @cards = Card.all
     @list = List.find(params[:id])
-    @bookmarks = Bookmark.where(list_id: @list)
+  end
+
+  def edit
+    @list = List.find(params[:id])
+  end
+
+  def update
+    @list = List.find(params[:id])
+    if @list.update(list_params)
+      redirect_to lists_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+    redirect_to lists_path(params[:id])
   end
 
   private

@@ -1,23 +1,24 @@
-<div class="container mt-4">
-  <h1><%= @list.name %></h1>
-  <div class="row">
-    <% @list.bookmarks.each do |l| %>
-      <div class="col-lg-3 col-md-6 cold-sm-12">
-        <div class="card p-2 mb-1 d-flex justify-content-around">
-          <img src=<%= l.movie.poster_url %>>
-          <div class="d-flex">
-            <h4 ><%= l.movie.title %></h4>
-            <%= link_to bookmark_path(l), method: :delete, data: { confirm: 'Are you sure you want to delete?' } do %>
-              <i class="fas fa-trash-alt flex-end"></i>
-            <% end %>
-          </div>
-          <p><%= l.comment %></p>
-          <p><%= l.movie.rating %>/10 ⭐</p>
-          <p><%= l.movie.overview %></p>
-        </div>
+<div class="d-flex position-fixed z-index">
+  <%= link_to lists_path, class: "btn btn-primary" do %>
+    <i class="fas fa-home click"></i>
+  <% end %>
+  <h2 class="m-0 list_name align-self-center btn btn-light"><%= @list.name %></h2>
+  <%= link_to new_list_favorite_path(@list), class: "btn btn-primary" do %>
+    <i class="fas fa-plus click"></i>
+  <% end %>
+</div>
+<div class="card-container">
+  <% @list.favorites.each do |f|%>
+    <div class="card pt-5 m-4">
+      <div class="front">
+        <%= "<img title='#{f.card.name}' src='#{f.card.image_url}'>".html_safe %>
       </div>
-    <% end %>
-  </div>
-  <%= link_to 'Create Bookmark', new_list_bookmark_path(@list), class: 'btn btn-primary' %>
-  <%= link_to 'back', lists_path, class: 'btn btn-warning' %>
+      <div class="back">
+        <%= "<img title='#{f.card.name}' src='https://i.pinimg.com/originals/ab/c9/85/abc9857e3024baba31716ec0a3d77858.jpg'>".html_safe %>
+      </div>
+      <%= link_to favorite_path(f), data: { method: :delete, confirm: "Are you sure? #{f.card.name} will be removed from list." }, class: "trash" do %>
+        <%= render 'shared/trash'%>
+      <% end %>
+    </div>
+  <% end %>
 </div>
