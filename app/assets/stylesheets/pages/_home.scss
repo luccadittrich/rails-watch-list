@@ -15,21 +15,21 @@ $transition: all 0.2s ease-in-out;
 //trashcan
 
 .trash-box {
-  width: 20px;
-  height: 20px;
+  width: 35px;
+  height: 35px;
   position: relative;
 
   //Hover
   &:hover .trash-top {
     //open the lid
     transform: translate(-50%, -15%) rotate(-20deg);
-    background: $trashColor2;
+    //background: $trashColor2;
   }
 
   &:hover .trash-btm {
     //rotate the bottom a little
     transform: translate(-50%, -100%) rotate(5deg);
-    background: $trashColor2;
+    //background: $trashColor2;
   }
 
   &:hover .trash {
@@ -126,11 +126,11 @@ $transition: all 0.2s ease-in-out;
   }
 }
 
-
 tr {
   width: 100%;
   td {
     width: 80%;
+    padding-bottom: 10px;
   }
 }
 
@@ -138,4 +138,8 @@ tr {
   &:hover {
     transform: scale(0.9);
   }
+}
+
+a {
+  //text-decoration: none;
 }
